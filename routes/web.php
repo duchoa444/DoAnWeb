@@ -50,3 +50,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 
 });
+Route::get('/courses', function () {
+    return view('courses.index');
+});
+    
