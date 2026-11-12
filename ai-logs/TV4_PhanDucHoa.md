@@ -1,4 +1,4 @@
-# NHẬT KÝ SỬ DỤNG AI – [HỌ VÀ TÊN] (TV4 – DATABASE)
+# NHẬT KÝ SỬ DỤNG AI – Phan Duc Hoa (TV4 – DATABASE)
 
 ## AI-01: Phác thảo sơ đồ ERD
 
@@ -9,3 +9,7 @@
   - **Gợi ý giữ lại:** Danh sách 8 bảng, PK, FK và các mối quan hệ giữa bảng.
   - **Gợi ý loại bỏ:** Những thuộc tính chưa phù hợp với yêu cầu đồ án.
 - **Bài học rút ra:** Biết cách xác định bảng, khóa chính, khóa ngoại và tạo bản phác ERD bằng dbdiagram.io.
+
+**Thời gian:** 11/11/2026
+- **Công cụ AI:** ChatGPT
+- **Prompt:** Thiết kế CSDL cập nhật bảng ERD_v2 bằng dbdiagram.io (đã cập nhật 5 bảng)
