@@ -37,3 +37,15 @@
 - **Prompt chính:** "Hướng dẫn xây dựng giao diện đăng ký, đăng nhập hiển thị thông báo lỗi từ server và cập nhật header hiển thị menu điều hướng theo 3 vai trò người dùng trong Laravel Blade."
 - **Kết quả & Kiểm chứng:** AI sinh mã HTML/CSS và cú pháp Blade (`@auth`, `@if($errors->any())`). Đã kiểm tra không trùng lặp route trong `routes/web.php` (giữ nguyên route có sẵn của TV2) và chạy thử giao diện thành công trên trình duyệt ở các đường dẫn `/login`, `/register`, `/courses`.
 - **Trạng thái:** Đã áp dụng và kiểm thử hoàn tất.
+
+## AI-05: Nối danh sách khóa học (HT-01) với cơ sở dữ liệu (Ngày 5 - Thứ 6, 13/11/2026)
+
+- **Thời gian:** 13/11/2026
+- **Công cụ AI:** Gemini
+- **Mục đích:** Thay thế mảng dữ liệu giả (fake data) ở trang danh sách khóa học bằng truy vấn dữ liệu thật từ CSDL (chỉ lấy các khóa học công khai) và đồng bộ route với phần phân quyền của TV2.
+- **Prompt chính:** "Hướng dẫn nối trang danh sách khóa học HT-01 với cơ sở dữ liệu trong Laravel (tạo CourseController lọc khóa học công khai và cập nhật Blade view từ mảng sang object Model)."
+- **Kết quả AI phản hồi & Đánh giá:**
+  - **Gợi ý giữ lại:** Tạo `CourseController@index` truy vấn `Course::with('teacher')->where('status', 'published')`, chuyển đổi cú pháp hiển thị trong `course-card.blade.php` sang thuộc tính đối tượng (`$course->title`, `$course->teacher->name`) và xử lý trường hợp danh sách rỗng bằng `@if($courses->isEmpty())`.
+  - **Gợi ý loại bỏ:** Xóa bỏ hoàn toàn khối `@php $courses = [...]; @endphp` dùng dữ liệu cứng ở Ngày 3 và loại bỏ route `GET /courses` cũ trả về view tĩnh bị trùng lặp trong `routes/web.php`.
+- **Kiểm chứng & Trạng thái:** Đã chạy `php artisan migrate:fresh --seed`, kiểm thử hiển thị dữ liệu thật thành công trên đường dẫn `/courses` và commit lên nhánh `feature/HT-01-khoa-hoc`.
+- **Bài học rút ra:** Luôn kiểm tra kỹ tên cột trạng thái (`status` / `is_published`) và quan hệ Model (`teacher` / `user`) trong migration trước khi viết truy vấn Eloquent để tránh lỗi sai tên cột hoặc quan hệ.
