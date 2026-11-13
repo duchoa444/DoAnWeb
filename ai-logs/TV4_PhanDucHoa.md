@@ -13,3 +13,35 @@
 **Thời gian:** 11/11/2026
 - **Công cụ AI:** ChatGPT
 - **Prompt:** Thiết kế CSDL cập nhật bảng ERD_v2 bằng dbdiagram.io (đã cập nhật 5 bảng)
+
+
+NGÀY 03 – THỨ TƯ, TUẦN 1
+
+AI-03-01: Hỗ trợ thiết kế Migration cơ sở dữ liệu
+
+Công cụ: ChatGPT
+
+Nội dung yêu cầu: Hướng dẫn kiểm tra cấu trúc các migration cho hệ thống quản lý học tập Laravel, bao gồm các bảng categories, courses, lessons, enrollments, lesson_progress, questions và quiz_attempts.
+
+Kết quả AI đề xuất: Giải thích cách thiết lập khóa chính, khóa ngoại, kiểu dữ liệu, quan hệ giữa các bảng và các ràng buộc UNIQUE cần thiết.
+
+Áp dụng: Sử dụng nội dung tham khảo để kiểm tra và hoàn thiện 7 migration của dự án.
+
+Nội dung yêu cầu: Hướng dẫn tạo dữ liệu mẫu cho hệ thống quản lý học tập bằng Laravel Seeder.
+
+Kết quả AI đề xuất: Hướng dẫn tạo dữ liệu mẫu cho danh mục, giảng viên, quản trị viên, học viên, khóa học, bài học, câu hỏi, đăng ký khóa học và lượt làm bài kiểm tra.
+
+NGÀY 04 – THỨ NĂM, TUẦN 1
+
+AI-04-01: Đối chiếu ERD với Migration
+
+Công cụ: ChatGPT
+
+Nội dung yêu cầu: Kiểm tra sơ đồ ERD của dự án quản lý học tập và đối chiếu với cấu trúc database đã triển khai.
+
+Kết quả AI đề xuất: Chỉ ra các thông tin cần rà soát như tên cột, khóa chính, khóa ngoại, quan hệ giữa các bảng, timestamps và các ràng buộc UNIQUE.
+
+Áp dụng: Điều chỉnh sơ đồ ERD để thống nhất với cấu trúc database, sau đó xuất sơ đồ ERD_Final.png.
+
+Áp dụng: Hoàn thiện tài liệu mô tả 8 bảng trong file mo-ta-bang.md và chuẩn bị nội dung trình bày ERD.
+
