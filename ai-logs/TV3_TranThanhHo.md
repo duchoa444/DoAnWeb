@@ -30,3 +30,10 @@
 - **Gợi ý giữ lại:** Cấu hình mảng dữ liệu giả $courses chuẩn xác, các bước khắc phục lỗi php.ini extension=zip và composer install rất trực quan.
 - **Gợi ý loại bỏ:** Không dùng database thật ở Mốc 1 mà dùng mảng dữ liệu giả theo đúng yêu cầu đề bài.
 - **Bài học rút ra:** Nắm rõ quy trình khắc phục lỗi môi trường Laravel khi khởi chạy trên máy mới.
+
+### AI-04 (Ngày 4 - Thứ 5, 12/11/2026)
+- **Công cụ AI sử dụng:** Gemini
+- **Mục đích:** Tạo giao diện trang Đăng nhập (`login.blade.php`), Đăng ký (`register.blade.php`) có vùng hiển thị lỗi server và cập nhật `header.blade.php` phân quyền theo vai trò (`student`, `teacher`, `admin`).
+- **Prompt chính:** "Hướng dẫn xây dựng giao diện đăng ký, đăng nhập hiển thị thông báo lỗi từ server và cập nhật header hiển thị menu điều hướng theo 3 vai trò người dùng trong Laravel Blade."
+- **Kết quả & Kiểm chứng:** AI sinh mã HTML/CSS và cú pháp Blade (`@auth`, `@if($errors->any())`). Đã kiểm tra không trùng lặp route trong `routes/web.php` (giữ nguyên route có sẵn của TV2) và chạy thử giao diện thành công trên trình duyệt ở các đường dẫn `/login`, `/register`, `/courses`.
+- **Trạng thái:** Đã áp dụng và kiểm thử hoàn tất.
