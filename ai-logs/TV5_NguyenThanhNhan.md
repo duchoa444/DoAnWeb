@@ -1,11 +1,10 @@
 # Nhật ký sử dụng AI - TV5 (Nguyễn Thành Nhân)
 
 ## Mục AI-01 (Ngày 1 - Thứ 2, Tuần 1)
-- **Thời gian:** 09/11/2026
-- **Công cụ AI:** Gemini
 - **Công việc**: Tạo file .gitignore và mẫu quy tắc Git cho nhóm.
 - **Prompt đã dùng**: "Viết file .gitignore chuẩn cho dự án Web và giải thích ý nghĩa các folder bị bỏ qua."
 - **Gợi ý AI giữ lại**: Giữ các dòng loại bỏ `node_modules/`, `.env`, thư mục `dist/` và `build/`.
+
 - **Gợi ý AI loại bỏ**: Bỏ các dòng cấu hình dành riêng cho Eclipse và NetBeans.
 
 ## Mục AI-02 (Ngày 2 - Thứ 3, Tuần 1)
@@ -50,3 +49,4 @@
 - **Kiểm tra & Chỉnh sửa của thành viên:**
   - Đã đối chiếu trực tiếp cây thư mục thực tế trên nhánh `develop` (các thư mục con trong `docs/` như `databases/`, `meetings/`, `wireframe/` và các file tài liệu hiện có) để chỉnh sửa mô tả trong `docs/cau-truc-thu-muc.md` khớp 100% với mã nguồn của nhóm.
   - Đã chạy kiểm tra thực tế `git shortlog -sn`, rà soát file trong `ai-logs/` của cả 5 thành viên và kiểm thử toàn bộ luồng cài đặt lại theo `README.md` sau khi merge PR.
+

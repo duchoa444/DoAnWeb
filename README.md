@@ -1,19 +1,15 @@
-# Hướng dẫn cài đặt và chạy dự án
+# Quản Lý Học Tập
 
-## 1. Cài đặt môi trường
+## Hướng dẫn cài đặt dự án
 
-Yêu cầu:
-- PHP 8.3 trở lên
-- Composer
-- Node.js & NPM
-- Laravel 12
-- SQLite
-
-## 2. Cài đặt thư viện và biên dịch giao diện
-
-Mở Terminal tại thư mục dự án và chạy các lệnh sau:
-
-```bash
-composer install
-npm install
-npm run build
+1. Clone dự án về máy:
+   git clone https://github.com/duchoa444/DoAnWeb_QuanLyHocTap.git
+2. Cài đặt các thư viện phụ thuộc:
+   composer install
+3. Tạo tệp môi trường:
+   cp .env.example .env
+   php artisan key:generate
+4. Cấu hình CSDL trong file `.env` và chạy Migration:
+   php artisan migrate
+5. Khởi chạy dự án:
+   php artisan serve

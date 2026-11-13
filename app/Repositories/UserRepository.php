@@ -4,17 +4,10 @@ namespace App\Repositories;
 
 use App\Models\User;
 
-class UserRepository
+class UserRepository extends BaseRepository
 {
-    // Tìm người dùng theo email
-    public function findByEmail($email)
+    public function model(): string
     {
-        return User::where('email', $email)->first();
-    }
-
-    // Tạo tài khoản mới
-    public function create(array $data)
-    {
-        return User::create($data);
+        return User::class;
     }
 }

@@ -2,38 +2,44 @@
 
 namespace App\Services;
 
+use App\Enums\UserRole;
 use App\Repositories\UserRepository;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use InvalidArgumentException;
 
-class AuthService
+class AuthService extends BaseService
 {
-    protected $userRepository;
+    protected UserRepository $userRepository;
 
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
     }
 
-    // Đăng ký tài khoản
     public function register(array $data)
     {
+        if ($this->userRepository->findByEmail($data['email'])) {
+            throw new InvalidArgumentException('Email này đã được sử dụng.');
+        }
+
         $data['password'] = Hash::make($data['password']);
+        $data['role'] = UserRole::STUDENT->value;
 
         return $this->userRepository->create($data);
     }
 
-    // Đăng nhập
-    public function login(array $data)
+    public function login(array $credentials)
     {
-        $user = $this->userRepository->findByEmail($data['email']);
+        $user = $this->userRepository->findByEmail($credentials['email']);
 
-        if (!$user) {
-            return false;
+        if (!$user || !Hash::check($credentials['password'], $user->password)) {
+            throw new InvalidArgumentException('Email hoặc mật khẩu không chính xác.');
         }
 
-        if (!Hash::check($data['password'], $user->password)) {
-            return false;
+        // Chặn tài khoản bị khóa
+        if ((isset($user->is_active) && !$user->is_active) || (isset($user->status) && $user->status === 'locked')) {
+            throw new InvalidArgumentException('Tài khoản của bạn đã bị khóa. Vui lòng liên hệ Quản trị viên.');
         }
 
         Auth::login($user);
@@ -41,8 +47,7 @@ class AuthService
         return $user;
     }
 
-    // Đăng xuất
-    public function logout()
+    public function logout(): void
     {
         Auth::logout();
     }

@@ -1,56 +1,24 @@
-
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+// Public routes
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Khu vực Học viên
+Route::middleware(['auth', 'role:student'])->prefix('student')->group(function () {
+    Route::get('/dashboard', fn() => response()->json(['message' => 'Khu vực Học viên']));
 });
 
-// Hiển thị trang đăng ký
-Route::get('/register', function () {
-    return view('auth.register');
+// Khu vực Giảng viên (/teacher/* chỉ giảng viên)
+Route::middleware(['auth', 'role:teacher'])->prefix('teacher')->group(function () {
+    Route::get('/dashboard', fn() => response()->json(['message' => 'Khu vực Giảng viên']));
 });
 
-// Xử lý đăng ký
-Route::post('/register', [AuthController::class, 'register']);
-
-// Hiển thị trang đăng nhập
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
-
-// Xử lý đăng nhập
-Route::post('/login', [AuthController::class, 'login']);
-
-Route::post('/logout', [AuthController::class, 'logout'])
-    ->middleware('auth');
-
-Route::middleware(['auth', 'role:student'])->group(function () {
-
-    Route::get('/student/dashboard', function () {
-        return 'Xin chào! Đây là trang học viên.';
-    });
-
+// Khu vực Quản trị (/admin/* chỉ quản trị)
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', fn() => response()->json(['message' => 'Khu vực Quản trị']));
 });
-
-Route::middleware(['auth', 'role:teacher'])->group(function () {
-
-    Route::get('/teacher/dashboard', function () {
-        return 'Xin chào! Đây là trang giảng viên.';
-    });
-
-});
-
-Route::middleware(['auth', 'role:admin'])->group(function () {
-
-    Route::get('/admin/dashboard', function () {
-        return 'Xin chào! Đây là trang quản trị viên.';
-    });
-
-});
-Route::get('/courses', function () {
-    return view('courses.index');
-});
-    

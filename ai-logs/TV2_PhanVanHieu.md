@@ -1,3 +1,4 @@
+
 # AI LOG - TV2 (PHAN VĂN HIẾU) - BACKEND LEAD
 
 ## NGÀY 1: KHỞI TẠO DỰ ÁN & CẤU TRÚC BACKEND 3 LỚP
@@ -51,3 +52,4 @@
 - Đã kiểm thử bằng cách đăng nhập tài khoản Học viên (`student`) và truy cập đường dẫn `/teacher/dashboard` -> Hệ thống chặn thành công và trả về lỗi `403 Forbidden`.
 - Đăng nhập tài khoản Giảng viên (`teacher`) và truy cập `/admin/dashboard` -> Hệ thống chặn thành công (`403 Forbidden`).
 - Đăng nhập tài khoản bị đánh dấu khóa (`is_active = false` / `status = locked`) -> `AuthService::login()` từ chối đăng nhập và trả thông báo lỗi rõ ràng.
+=======
