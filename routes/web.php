@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Models\Course;
 
 Route::get('/', function () {
     return view('welcome');
@@ -51,6 +52,21 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 });
 Route::get('/courses', function () {
-    return view('courses.index');
+    // Lấy danh sách khóa học công khai (published) từ CSDL
+    $courses = Course::with('teacher')
+        ->withCount('lessons')
+        ->where('status', 'published')
+        ->get()
+        ->map(function ($course) {
+            return [
+                'id' => $course->id,
+                'title' => $course->title,
+                'author' => $course->teacher->name ?? 'Giảng viên',
+                'lessons' => $course->lessons_count,
+                'image' => $course->thumbnail ?? null,
+            ];
+        });
+
+    return view('courses.index', compact('courses'));
 });
     
