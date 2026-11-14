@@ -152,7 +152,7 @@ class DatabaseSeeder extends Seeder
                 'title' => $data['title'],
                 'description' => $data['description'],
                 'quiz_minutes' => 30,
-                'status' => 'public',
+                'status' => 'published',
                 'updated_at' => now(),
             ];
 
