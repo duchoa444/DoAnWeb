@@ -3,10 +3,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CourseController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/courses');
 
 // Hiển thị trang đăng ký
 Route::get('/register', function () {
@@ -50,7 +49,5 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 
 });
-Route::get('/courses', function () {
-    return view('courses.index');
-});
+Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
     
